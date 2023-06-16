@@ -43,7 +43,8 @@ class AboutJobItem extends Component {
     const responseJobData = await fetch(jobDetailsApiUrl, optionsJobData)
     if (responseJobData.ok === true) {
       const fetchedJobData = await responseJobData.json()
-      const updatedJobDetailsData = [fetchedJobData.job_details].nap(
+      console.log(fetchedJobData)
+      const updatedJobDetailsData = fetchedJobData.job_details.map(
         eachItem => ({
           companyLogoUrl: eachItem.company_logo_url,
           companyWebsiteUrl: eachItem.company_website_url,

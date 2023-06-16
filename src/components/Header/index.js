@@ -20,7 +20,7 @@ const Header = props => {
             <img className="logo" src={websiteLogo} alt="website logo" />
           </Link>
         </li>
-        <li>
+        <li className="rotate-part">
           <Link className="link" to="/">
             <ImHome className="home-icon" />
             <h1 className="nav-text">Home</h1>

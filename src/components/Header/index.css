@@ -1,6 +1,6 @@
 .nav-container {
   background-color: #272727;
-  padding: 10px;
+  padding: 5px;
 }
 
 .header-ul-container {
@@ -26,7 +26,8 @@
   color: #ffffff;
   font-weight: bold;
   font-family: 'Roboto';
-  font-size: 23px;
+  font-size: 18px;
+  padding: 10px;
 }
 
 .btn-logout {
@@ -96,4 +97,10 @@
     cursor: pointer;
     padding: 5px;
   }
+}
+
+.rotate-part {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }

@@ -90,7 +90,7 @@ class AllJobs extends Component {
       method: 'GET',
     }
     const responseProfile = await fetch(profileApiUrl, optionsProfile)
-
+    // console.log(responseProfile)
     if (responseProfile.ok === true) {
       const fetchedDataProfile = [await responseProfile.json()]
       const updatedDataProfile = fetchedDataProfile.map(eachItem => ({
@@ -112,7 +112,7 @@ class AllJobs extends Component {
     this.setState({apiJobsStatus: apiJobsStatusConstants.inProgress})
     const jwtToken = Cookies.get('jwt_token')
     const {checkboxInputs, radioInput, searchInput} = this.state
-    const jobsApiUrl = `https://apis.ccbp.in/jobs?employment_type= ${checkboxInputs}&minimum_package=${radioInput}&search= ${searchInput}`
+    const jobsApiUrl = `https://apis.ccbp.in/jobs?employment_type= ${checkboxInputs} & minimum_package=${radioInput} & search=${searchInput}`
     const optionsJobs = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
@@ -120,6 +120,7 @@ class AllJobs extends Component {
       method: 'GET',
     }
     const responseJobs = await fetch(jobsApiUrl, optionsJobs)
+    // console.log(responseJobs)
     if (responseJobs.ok === true) {
       const fetchedDataJobs = await responseJobs.json()
       const updatedDataJobs = fetchedDataJobs.jobs.map(eachItem => ({
