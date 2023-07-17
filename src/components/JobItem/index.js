@@ -1,10 +1,12 @@
 import {Link} from 'react-router-dom'
 import {MdLocationOn} from 'react-icons/md'
-import {AiFillStar} from 'react-icons/ai'
+import {AiFillStar, AiFillMail} from 'react-icons/ai'
+
+// import {GrMail} from 'react-icons/bs'
 import './index.css'
 
 const JobItem = props => {
-  const {jobData} = props
+  const {jobsData} = props
   const {
     companyLogoUrl,
     employmentType,
@@ -14,10 +16,10 @@ const JobItem = props => {
     packagePerAnnum,
     rating,
     title,
-  } = jobData
+  } = jobsData
   return (
     <Link to={`/jobs/${id}`} className="link-item">
-      <li className="jon-item-container">
+      <li className="job-item-container">
         <div className="first-part-container">
           <div className="img-title-container">
             <img
@@ -40,6 +42,7 @@ const JobItem = props => {
                 <p className="location">{location}</p>
               </div>
               <div className="employment-type-icon-employment-type-container">
+                <AiFillMail className="location-icon" />
                 <p className="job-type">{employmentType}</p>
               </div>
             </div>

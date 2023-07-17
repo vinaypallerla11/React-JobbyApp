@@ -36,6 +36,7 @@
   display: flex;
   flex-direction: row;
   margin-top: 0;
+  margin-left: 10px;
 }
 
 .star-icon {
@@ -57,7 +58,7 @@
   justify-content: space-between;
 }
 
-location-job-type-container {
+.location-job-type-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -67,6 +68,7 @@ location-job-type-container {
 .location-icon-location-container {
   display: flex;
   flex-direction: row;
+  margin-left: 10px;
 }
 
 .location-icon {
@@ -81,6 +83,7 @@ location-job-type-container {
 
 .job-type {
   margin-top: 0;
+  margin-left: 5px;
 }
 
 .package {
@@ -99,4 +102,10 @@ location-job-type-container {
   .title-heading {
     font-size: 25px;
   }
+}
+
+.employment-type-icon-employment-type-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }

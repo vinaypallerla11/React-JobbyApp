@@ -35,16 +35,20 @@ class AboutJobItem extends Component {
       apiStatus: apiStatusConstants.inProgress,
     })
     const jwtToken = Cookies.get('jwt_token')
-    const jobDetailsApiUrl = `https://apis.cobp.in/jobs/${id}`
+    const jobDetailsApiUrl = `https://apis.ccbp.in/jobs/${id}`
     const optionsJobData = {
-      headers: {Authorization: `Bearer ${jwtToken}`},
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
       method: 'GET',
     }
+
     const responseJobData = await fetch(jobDetailsApiUrl, optionsJobData)
+
     if (responseJobData.ok === true) {
       const fetchedJobData = await responseJobData.json()
       console.log(fetchedJobData)
-      const updatedJobDetailsData = fetchedJobData.job_details.map(
+      const updatedJobDetailsData = [fetchedJobData.job_details].map(
         eachItem => ({
           companyLogoUrl: eachItem.company_logo_url,
           companyWebsiteUrl: eachItem.company_website_url,
@@ -73,7 +77,7 @@ class AboutJobItem extends Component {
           jobDescription: eachItem.job_description,
           employmentType: eachItem.employment_type,
           location: eachItem.location,
-          ration: eachItem.rating,
+          rating: eachItem.rating,
           title: eachItem.title,
         }),
       )
@@ -108,7 +112,7 @@ class AboutJobItem extends Component {
         title,
       } = jobDataDetails[0]
       return (
-        <>
+        <div className="">
           <div className="job-item-container">
             <div className="first-part-container">
               <div className="img-title-container">
@@ -121,7 +125,7 @@ class AboutJobItem extends Component {
                   <h1 className="title-heading">{title}</h1>
                   <div className="star-rating-container">
                     <AiFillStar className="star-icon" />
-                    <p className="rating-text">{location}</p>
+                    <p className="rating-text">{rating}</p>
                   </div>
                 </div>
               </div>
@@ -135,7 +139,7 @@ class AboutJobItem extends Component {
                     <p className="job-type">{employmentType}</p>
                   </div>
                 </div>
-                <div>
+                <div className="package-container">
                   <p className="package">{packagePerAnnum}</p>
                 </div>
               </div>
@@ -145,13 +149,13 @@ class AboutJobItem extends Component {
               <div className="description-visit-container">
                 <h1 className="description-job-heading">Description</h1>
                 <a className="visit-anchor" href={companyWebsiteUrl}>
-                  visit <BiLinkExternal />
+                  Visit <BiLinkExternal />
                 </a>
               </div>
               <p className="description-para">{jobDescription}</p>
             </div>
             <h1>Skills</h1>
-            <ul className="ul=job-details-container">
+            <ul className="ul-job-details-container">
               {skills.map(eachItem => (
                 <li className="li-job-details-container" key={eachItem.name}>
                   <img
@@ -181,7 +185,7 @@ class AboutJobItem extends Component {
               />
             ))}
           </ul>
-        </>
+        </div>
       )
     }
     return null
@@ -213,7 +217,7 @@ class AboutJobItem extends Component {
 
   renderJobLoadingView = () => (
     <div className="job-details-loader" data-testid="loader">
-      <Loader type="ThreeDots" color="red" height="50" width="58" />
+      <Loader type="ThreeDots" color="#8b69ff" height="50" width="50" />
     </div>
   )
 
@@ -223,7 +227,7 @@ class AboutJobItem extends Component {
     switch (apiStatus) {
       case apiStatusConstants.success:
         return this.renderJobDetailsSuccessView()
-      case apiStatusConstants.failuré:
+      case apiStatusConstants.failure:
         return this.renderJobFailureView()
       case apiStatusConstants.inProgress:
         return this.renderJobLoadingView()

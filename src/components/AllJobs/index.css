@@ -36,8 +36,11 @@
 
 .profile-description {
   font-family: 'Roboto';
-  color: #000000;
+  color: #ffffff;
   font-weight: bold;
+  font-size: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 5x;
 }
 
 .hr-line {
@@ -131,7 +134,7 @@
   text-align: center;
 }
 
-failure-paragraph {
+.failure-paragraph {
   color: #ffffff;
   font-family: 'Roboto';
   text-align: center;
@@ -159,6 +162,9 @@ failure-paragraph {
   cursor: pointer;
   border: 0;
   background-color: #202020;
+  padding-bottom: 6px;
+  border: 2px solid gray;
+  border-left:none;
 }
 
 .search-icon {
@@ -205,4 +211,11 @@ failure-paragraph {
     width: 90%;
     height: 90%;
   }
+}
+
+.bg-content {
+  background-image: url('https://assets.ccbp.in/frontend/react-js/profile-bg.png');
+  padding: 5px;
+  border-radius: 12px;
+  width: 70%;
 }

@@ -14,6 +14,7 @@ class LoginForm extends Component {
   onGetPassword = event => this.setState({password: event.target.value})
 
   onSubmitSuccess = jwtToken => {
+    console.log(this.props)
     const {history} = this.props
 
     Cookies.set('jwt_token', jwtToken, {expires: 30, path: '/'})
@@ -36,7 +37,7 @@ class LoginForm extends Component {
     }
     const response = await fetch(loginApiUrl, options)
     const data = await response.json()
-    console.log(response)
+    // console.log(response)
     // console.log(data)
     if (response.ok === true) {
       this.onSubmitSuccess(data.jwt_token)

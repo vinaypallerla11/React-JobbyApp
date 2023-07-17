@@ -112,7 +112,7 @@ class AllJobs extends Component {
     this.setState({apiJobsStatus: apiJobsStatusConstants.inProgress})
     const jwtToken = Cookies.get('jwt_token')
     const {checkboxInputs, radioInput, searchInput} = this.state
-    const jobsApiUrl = `https://apis.ccbp.in/jobs?employment_type= ${checkboxInputs} & minimum_package=${radioInput} & search=${searchInput}`
+    const jobsApiUrl = `https://apis.ccbp.in/jobs?employment_type=${checkboxInputs}&minimum_package=${radioInput}&search=${searchInput}`
     const optionsJobs = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
@@ -123,6 +123,7 @@ class AllJobs extends Component {
     // console.log(responseJobs)
     if (responseJobs.ok === true) {
       const fetchedDataJobs = await responseJobs.json()
+      //   console.log(fetchedDataJobs)
       const updatedDataJobs = fetchedDataJobs.jobs.map(eachItem => ({
         companyLogoUrl: eachItem.company_logo_url,
         employmentType: eachItem.employment_type,
@@ -175,7 +176,7 @@ class AllJobs extends Component {
     if (responseSuccess) {
       const {name, profileImageUrl, shortBio} = profileData[0]
       return (
-        <div>
+        <div className="bg-content">
           <img src={profileImageUrl} className="profile-icon" alt="profile" />
           <h1 className="profile-name">{name}</h1>
           <p className="profile-description">{shortBio}</p>
@@ -253,7 +254,7 @@ class AllJobs extends Component {
         <img
           className="no-jobs-img"
           src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png"
-          alt="no-jobs"
+          alt="no jobs"
         />
         <h1>No jobs found</h1>
         <p>We could not find any jobs. Try other filters.</p>
@@ -357,7 +358,7 @@ class AllJobs extends Component {
                 value={searchInput}
                 placeholder="Search"
                 onChange={this.onGetSearchInput}
-                onKeyDown={this.onSubmitSearchInput}
+                // onKeyDown={this.onSubmitSearchInput}
               />
               <button
                 data-testid="searchButton"
